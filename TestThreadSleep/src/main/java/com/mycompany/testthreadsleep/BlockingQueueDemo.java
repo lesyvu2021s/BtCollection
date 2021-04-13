@@ -17,7 +17,10 @@ public class BlockingQueueDemo {
         BlockingQueue<String> demo = new ArrayBlockingQueue<String>(1024);
         BtProducerCons producer = new BtProducerCons(demo);
         BtConsumer consumer = new BtConsumer(demo);
-        new Thread(producer).start();
+        Thread t1 = new Thread(producer);
+        t1.start();
+        
+        
         new Thread(consumer).start();
         
        Thread.sleep(1234);
