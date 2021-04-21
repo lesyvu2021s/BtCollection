@@ -5,6 +5,7 @@
  */
 package com.mycompany.streamexample;
 
+import static com.mycompany.streamexample.SequentialStream.createDummyData;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -16,26 +17,30 @@ import java.util.concurrent.TimeUnit;
  */
 public class ParallelStream2 {
     public static void main(String[] args) {
-       
-        List<String> values = createData() ;
-        
+       List<String> values = createDummyData();
+ 
         long startTime = System.nanoTime();
-        long count =values.parallelStream().sorted().count();
+ 
+        long count = values.parallelStream().sorted().count();
         System.out.println(count);
+ 
         long endTime = System.nanoTime();
-        long milis = TimeUnit.NANOSECONDS.toMillis(endTime -startTime);
-        System.out.println("sử dụng parallelStream hết :   "+ milis + "ms");
+ 
+        long millis = TimeUnit.NANOSECONDS.toMillis(endTime - startTime);
+ 
+        System.out.println(String.format("sắp xếp song song  : %d ms", millis));
         
         
                 }
 
-    private static List<String> createData() {
-        int max = 1000000 ;
+   public static List<String> createDummyData() {
+        int max = 1000000;
         List<String> values = new ArrayList<>(max);
-        for(int i=0 ; i< max ; i++ ){
+        for (int i = 0; i < max; i++) {
             UUID uuid = UUID.randomUUID();
             values.add(uuid.toString());
         }
-        return values ;
+        return values;
     }
+    
 }

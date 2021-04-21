@@ -63,6 +63,19 @@ public class TestStream {
         int result = IntStream.of(1,2,3,4).reduce(0, (a,b) ->(a+b));
         System.out.println(result);
         
+        System.out.println("----------------------------------------");
+        List<String> letters = Arrays.asList("a", "b", "c", "d", "e");
+        String result3 = letters.stream().reduce("", (subtotal , element) -> subtotal + element);
+        System.out.println("result3 : " + result3);
+        String result4 = letters.stream().reduce("", String::concat);
+        System.out.println("sử dung concat , result4 : " + result4);
+        
+        System.out.println("------------------------------------");
+        List<Integer> ages = Arrays.asList(25, 30, 45, 28, 32);
+        int result5 = ages.parallelStream().reduce(0, (a,b )->  a+b );
+        System.out.println("kết quả result5 : " + result5);
+        int result6 = ages.parallelStream().reduce(0, Integer::sum);
+        System.out.println("kết quả result6 =  "+ result6);
         
         
     }
