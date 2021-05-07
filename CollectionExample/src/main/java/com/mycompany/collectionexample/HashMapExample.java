@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.interfacebt;
+package com.mycompany.collectionexample;
 
 /**
  *
  * @author techcare
  */
-public interface FourFour extends OneOne{
-    void show();
+public class HashMapExample {
+    
 }
